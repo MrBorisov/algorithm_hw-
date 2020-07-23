@@ -78,11 +78,13 @@ print(lst_names_buf)
 Решение тупое, в лоб. Сложность O(n+3) так как первый цикл выполнится n раз и второй  три раза, а сложнее цикла ни 
 чего нет в этом решении. Поэтому сложность O(n)
 """
+# ----------------------------var 3------------------------------------------------
 
 date_base = {'Рога и копыта': 1000000, 'ИП Пупкин': 50000, 'Google': 999999999, 'Сфера': 11000, 'Рейд': 220000}
+list_elements = list(date_base.items()) # O(1)
+list_elements.sort(key=lambda i: i[1], reverse=1) # O(NlogN)
+print(list_elements[:3])
 
-max_value = max(date_base.values())
-for key, val in date_base.items():
-    if val == max_value:
-        print (key, val)
-        #date_base.pop(key)
+'''
+решение оптимальное, мне кажется, сложность O(NlogN). Это решение лучше, меньше строк, все задано явно. 
+'''
