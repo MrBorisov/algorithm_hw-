@@ -18,3 +18,32 @@
 
 После реализации структуры, проверьте ее работу на различных сценариях
 """
+class StackClass:
+    def __init__(self):
+        self.elems = []
+
+    def is_empty(self):
+        return self.elems == []
+
+    def push_in(self,el):
+        self.elems.append(el)
+
+    def pop_out(self):
+        return self.elems.pop()
+
+    def get_val(self):
+        return self.elems[len(self.elems) - 1]
+
+    def stack_size(self):
+        return len(self.elems)
+
+if __name__ == '__main__':
+
+    sc_o = StackClass()
+    print(sc_o.is_empty())
+    sc_o.push_in(10)
+    sc_o.push_in('code')
+    sc_o.push_in(False)
+    sc_o.push_in(5.5)
+
+    print(sc_o.get_val())
