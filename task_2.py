@@ -18,30 +18,30 @@
 А без столкновения со сложностями его не развить.
 """
 
-# ----------------------------var 1-------------------------------------------------
+# ----------------------------var 1---------------------------------------
 import random
 
-def min_el (lst):
+
+def min_el(list_el):
     min_val = 100
-    for iter1 in range(len(lst)):
-        for iter2 in range(len(lst)):
-            if lst[iter1] < lst[iter2] and lst[iter1] < min_val:
-                min_val = lst[iter1]
-            iter2 += 1
-        iter1 += 1
+    for iter1 in enumerate(list_el):
+        for iter2 in enumerate(list_el):
+            if iter1[1] < iter2[1] and iter1[1] < min_val:
+                min_val = iter1[1]
     return min_val
 
-lst = [random.randint(1, 99) for i in range(1,15)]
-print(lst)
-print(min_el(lst))
 
-#-----------------------------var 2-------------------------------------------------
+elements = [random.randint(1, 99) for i in range(1, 15)]
+print(elements)
+print(min_el(elements))
 
-import random
+# -----------------------------var 2--------------------------------------
 
-def min_el (lst):
-    return min(lst)
 
-lst = [random.randint(1, 99) for i in range(1,15)]
-print(lst)
-print(min_el(lst))
+def min_el_two(list_el):
+    return min(list_el)
+
+
+lst = [random.randint(1, 99) for i in range(1, 15)]
+print(elements)
+print(min_el_two(elements))
