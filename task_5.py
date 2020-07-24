@@ -47,3 +47,21 @@ if __name__ == '__main__':
     sc_o.push_in(5.5)
 
     print(sc_o.get_val())
+
+def add_el(mass, el):
+    index = 0
+    while True:
+        l = len(mass[index])
+        if len(mass[index]) < 5 or len(mass[index]) == 0:
+            lst = mass[index].copy()
+            lst.append(el)
+            mass.pop(index)
+            mass.insert(index, lst)
+            break
+        else:
+            index += 1
+            if index >= 3:
+                break
+    return mass
+elems = [[1,1,1,2,21],[1,2,2,2,2],[]]
+print(add_el(elems, 1))
