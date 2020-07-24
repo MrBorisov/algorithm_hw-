@@ -18,59 +18,57 @@
 
 После реализации структуры, проверьте ее работу на различных сценариях
 """
+
+
 class StackClass:
     def __init__(self):
-        self.elems = [[],[],[]]
+        self.elems = [[], [], []]
 
     def is_empty(self):
-        return self.elems == [[[],[],[]]]
+        return self.elems == [[], [], []]
 
-    def push_in(self,el):
+    def push_in(self, el):
         index = 0
         while True:
-            l = len(self.elems[index])
             if len(self.elems[index]) < 5 or len(self.elems[index]) == 0:
                 lst = self.elems[index].copy()
                 lst.append(el)
                 self.elems.pop(index)
                 self.elems.insert(index, lst)
-
                 break
             else:
                 index += 1
                 if index >= 3:
                     break
         return self.elems
+
     def pop_out(self):
-        #return self.elems.pop()
         index = len(self.elems) - 1
         while index >= 0:
-            if self.elems[index] != []:
+            if self.elems[index] == []:
+                index -= 1
+            else:
                 lst = self.elems[index].copy()
                 lst.pop()
                 self.elems.pop(index)
                 self.elems.insert(index, lst)
                 break
-            else:
-                index -= 1
 
     def get_val(self):
-        index = len(self.elems)-1
+        index = len(self.elems) - 1
         while True:
-            if self.elems[index] != []:
-                return self.elems[index][-1]
-                break
+            if self.elems[index] == []:
+                index -= 1
             else:
-                index -=1
+                return self.elems[index][-1]
 
     def stack_size(self):
         index = len(self.elems) - 1
         while True:
-            if self.elems[index] != []:
-                return len(self.elems[index])
-                break
-            else:
+            if self.elems[index] == []:
                 index -= 1
+            else:
+                return len(self.elems[index])
 
 
 if __name__ == '__main__':
