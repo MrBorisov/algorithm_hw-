@@ -31,28 +31,28 @@ date_base = {
     'Сфера': 11000,
     'Рейд': 220000}
 
-profits = date_base.values()
-names = date_base.keys()
-lst_pr = []
+profits = date_base.values() # O(1)
+names = date_base.keys() # O(1)
+lst_pr = [] # O(1)
 
-for element in profits:
-    lst_pr.append(element)
-lst_names = []
+for element in profits: # O(n)
+    lst_pr.append(element) # O(1)
+lst_names = [] # O(1)
 
-for element in names:
-    lst_names.append(element)
+for element in names: # O(n)
+    lst_names.append(element) # O(1)
 
-lst_buf = lst_pr.copy()
-lst_buf.sort(reverse=1)
-lst_names_buf = []
+lst_buf = lst_pr.copy() # O(n)
+lst_buf.sort(reverse=1) #O(n log n)
+lst_names_buf = [] # O(1)
 
-for element in lst_buf[:3]:
-    index = lst_pr.index(element)
-    lst_names_buf.append(lst_names[index])
+for element in lst_buf[:3]: # O(3)
+    index = lst_pr.index(element) # O(1)
+    lst_names_buf.append(lst_names[index]) # O(1)
 
-print(lst_names_buf)
+print(lst_names_buf) # O(1)
 """
-Решение тупое, в лоб. Сложность O(2n+3) так как два цикла выполнится n раз, а третий три раза,
+Решение тупое, в лоб. Сложность O(3n+3) так как два цикла выполнится n раз, а третий три раза,
 а сложнее цикла ни чего нет в этом решении. Поэтому сложность O(n)
 """
 # ----------------------------var 2---------------------------------------
@@ -64,25 +64,25 @@ date_base = {
     'Сфера': 11000,
     'Рейд': 220000}
 
-profits = date_base.values()
-names = date_base.keys()
-lst_pr = []
-lst_names = []
-for key, val in date_base.items():
-    lst_pr.append(val)
-    lst_names.append(key)
+profits = date_base.values() # O(1)
+names = date_base.keys() # O(1)
+lst_pr = [] # O(1)
+lst_names = [] # O(1)
+for key, val in date_base.items(): # O(n)
+    lst_pr.append(val) # O(1)
+    lst_names.append(key) # O(1)
 
-lst_buf = lst_pr.copy()
-lst_buf.sort(reverse=1)
-lst_names_buf = []
+lst_buf = lst_pr.copy() # O(n)
+lst_buf.sort(reverse=1) #O(n log n)
+lst_names_buf = [] # O(1)
 
-for element in lst_buf[:3]:
-    index = lst_pr.index(element)
-    lst_names_buf.append(lst_names[index])
+for element in lst_buf[:3]: # O(3)
+    index = lst_pr.index(element) #O(1)
+    lst_names_buf.append(lst_names[index]) #O(1)
 
-print(lst_names_buf)
+print(lst_names_buf) #O(1)
 """
-Решение тупое, в лоб. Сложность O(n+3) так как первый цикл выполнится n раз
+Решение тупое, в лоб. Сложность O(2n+3) так как первый цикл выполнится n раз
 и второй  три раза, а сложнее цикла ни чего нет в этом решении. Поэтому сложность O(n)
 """
 # ----------------------------var 3---------------------------------------
@@ -95,10 +95,11 @@ date_base = {
     'Рейд': 220000}
 list_elements = list(date_base.items())  # O(1)
 list_elements.sort(key=lambda i: i[1], reverse=1)  # O(NlogN)
-print(list_elements[:3])
+print(list_elements[:3]) #O(k+n) = O(n)
 
 '''
 решение оптимальное без цикла, мне кажется, сложность O(NlogN).
 Правде оно будет сложнее чем предыдущие, если массив большой.
-Это решение лучше, меньше строк, все задано явно.
+Это решение лучше, меньше строк, все задано явно. А по поводу среза не стоит переживать,
+стандартная функция оптимальнее работает, чем мой велосипед в первых двух примерах.
 '''

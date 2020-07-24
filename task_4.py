@@ -35,16 +35,45 @@ data_base = {'rubik': ['password', 1],
 
 
 def auto(login, password):
-    if data_base.get(login)[1] != 1: # O(1)
+    if data_base.get(login)[1] != 1:  # O(1)
         print('необходимо выполнить активацию учетной записи')
-    elif data_base.get(login)[0] != password: # O(1)
+    elif data_base.get(login)[0] != password:  # O(1)
         print('Не верный пароль')
     else:
         print('Авторизация успешна')
 
 
-login = input('введите логин: ')
-password = input('введите пароль: ')
-auto(login, password)
+user_name = input('введите логин: ')
+try:
+    data_base.get(user_name)
+    user_password = input('введите пароль: ')
+    auto(user_name, user_password)
+except TypeError:
+    print('Такого пользователя не существует')
+
+# O(1) нет циклов, нет сложных операций, этот вариант лучше, ибо
+
+# ----------------------------var 2---------------------------------------
+
+users_base = ['rubik', 'bob', 'lock']
+date_base = [['password', 1], ['12345', 1], ['123asd', 0]]
+
+def auto(login):
+    password = input('введите пароль: ')
+    index = users_base.index(login)
+    if date_base[index][1] != 1:  # O(1)
+        print('необходимо выполнить активацию учетной записи')
+    elif date_base[index][0] != password:  # O(1)
+        print('Не верный пароль')
+    else:
+        print('Авторизация успешна')
+
+
+user_name = input('введите логин: ')
+try:
+    users_base.index(user_name)
+    auto(user_name)
+except ValueError:
+    print('Такого пользователя не существует')
 
 # O(1) нет циклов, нет сложных операций
