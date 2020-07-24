@@ -20,22 +20,58 @@
 """
 class StackClass:
     def __init__(self):
-        self.elems = []
+        self.elems = [[],[],[]]
 
     def is_empty(self):
-        return self.elems == []
+        return self.elems == [[[],[],[]]]
 
     def push_in(self,el):
-        self.elems.append(el)
+        index = 0
+        while True:
+            l = len(self.elems[index])
+            if len(self.elems[index]) < 5 or len(self.elems[index]) == 0:
+                lst = self.elems[index].copy()
+                lst.append(el)
+                self.elems.pop(index)
+                self.elems.insert(index, lst)
 
+                break
+            else:
+                index += 1
+                if index >= 3:
+                    break
+        return self.elems
     def pop_out(self):
-        return self.elems.pop()
+        #return self.elems.pop()
+        index = len(self.elems) - 1
+        while index >= 0:
+            if self.elems[index] != []:
+                lst = self.elems[index].copy()
+                lst.pop()
+                self.elems.pop(index)
+                self.elems.insert(index, lst)
+                break
+            else:
+                index -= 1
 
     def get_val(self):
-        return self.elems[len(self.elems) - 1]
+        index = len(self.elems)-1
+        while True:
+            if self.elems[index] != []:
+                return self.elems[index][-1]
+                break
+            else:
+                index -=1
 
     def stack_size(self):
-        return len(self.elems)
+        index = len(self.elems) - 1
+        while True:
+            if self.elems[index] != []:
+                return len(self.elems[index])
+                break
+            else:
+                index -= 1
+
 
 if __name__ == '__main__':
 
@@ -45,23 +81,8 @@ if __name__ == '__main__':
     sc_o.push_in('code')
     sc_o.push_in(False)
     sc_o.push_in(5.5)
-
+    sc_o.push_in(55.5)
+    sc_o.pop_out()
     print(sc_o.get_val())
-
-def add_el(mass, el):
-    index = 0
-    while True:
-        l = len(mass[index])
-        if len(mass[index]) < 5 or len(mass[index]) == 0:
-            lst = mass[index].copy()
-            lst.append(el)
-            mass.pop(index)
-            mass.insert(index, lst)
-            break
-        else:
-            index += 1
-            if index >= 3:
-                break
-    return mass
-elems = [[1,1,1,2,21],[1,2,2,2,2],[]]
-print(add_el(elems, 1))
+    print(sc_o.elems)
+    print(sc_o.stack_size())
