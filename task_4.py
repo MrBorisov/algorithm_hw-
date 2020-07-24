@@ -38,42 +38,47 @@ def auto(login, password):
     if data_base.get(login)[1] != 1:  # O(1)
         print('необходимо выполнить активацию учетной записи')
     elif data_base.get(login)[0] != password:  # O(1)
-        print('Не верный пароль')
+        print('Не верный пароль')  # O(1)
     else:
-        print('Авторизация успешна')
+        print('Авторизация успешна')  # O(1)
 
 
-user_name = input('введите логин: ')
+user_name = input('введите логин: ')  # O(1)
 try:
-    data_base.get(user_name)
-    user_password = input('введите пароль: ')
-    auto(user_name, user_password)
+    data_base.get(user_name)  # O(1)
+    user_password = input('введите пароль: ')  # O(1)
+    auto(user_name, user_password)  # O(1)
 except TypeError:
-    print('Такого пользователя не существует')
+    print('Такого пользователя не существует')  # O(1)
 
-# O(1) нет циклов, нет сложных операций, этот вариант лучше, ибо
+'''
+O(1) нет циклов, нет сложных операций, этот вариант лучше, ибо Словарь красивее,
+а красивое лучше не красивого
+'''
+
 
 # ----------------------------var 2---------------------------------------
 
 users_base = ['rubik', 'bob', 'lock']
 date_base = [['password', 1], ['12345', 1], ['123asd', 0]]
 
-def auto(login):
-    password = input('введите пароль: ')
-    index = users_base.index(login)
+
+def auto_2(login):
+    password = input('введите пароль: ')  # O(1)
+    index = users_base.index(login)  # O(1)
     if date_base[index][1] != 1:  # O(1)
-        print('необходимо выполнить активацию учетной записи')
+        print('необходимо выполнить активацию учетной записи')  # O(1)
     elif date_base[index][0] != password:  # O(1)
-        print('Не верный пароль')
+        print('Не верный пароль')  # O(1)
     else:
-        print('Авторизация успешна')
+        print('Авторизация успешна')  # O(1)
 
 
-user_name = input('введите логин: ')
+user_name = input('введите логин: ')  # O(1)
 try:
-    users_base.index(user_name)
-    auto(user_name)
+    users_base.index(user_name)  # O(1)
+    auto_2(user_name)  # O(1)
 except ValueError:
-    print('Такого пользователя не существует')
+    print('Такого пользователя не существует')  # O(1)
 
 # O(1) нет циклов, нет сложных операций
