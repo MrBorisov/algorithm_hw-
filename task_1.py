@@ -42,12 +42,12 @@ def check_2(lst_obj):
     что такой элемент отстутствует
     в оставшихся справа элементах
 
-    Сложность: !!! Линейная. количество сравнений растет линейно с ростом n
+    Сложность: !!! O(n). количество сравнений растет линейно с ростом n
     """
-    for index in range(len(lst_obj)):          # !!! Линейная O(n)
-        if lst_obj[index] in lst_obj[index + 1:]:    # !!! константа
-            return False                   # !!! константа
-    return True                            # !!! константа
+    for index in range(len(lst_obj)):          # !!! O(n)
+        if lst_obj[index] in lst_obj[index + 1:]:    # !!! O(1)
+            return False                   # !!! O(1)
+    return True                            # !!! O(1)
 
 
 ##########################################################################
@@ -60,12 +60,12 @@ def check_3(lst_obj):
 
     Сложность: !!! Линейная O(n) так как сравнений будет n-1 и при росте n будет линейный рост количества сравнений
     """
-    lst_copy = sorted(lst_obj)                 # !!! константа
+    lst_copy = sorted(lst_obj)                 # !!! O(1)
     for i in range(
-            len(lst_obj) - 1):        # !!! O(n-1), можно O(n), len(lst) константа, согласно документации
-        if lst_copy[i] == lst_copy[i + 1]:     # !!! константа
-            return False                     # !!! константа
-    return True                              # !!! константа
+            len(lst_obj) - 1):        # !!! O(n-1), можно O(n), len(lst) O(1), согласно документации
+        if lst_copy[i] == lst_copy[i + 1]:     # !!! O(1)
+            return False                     # !!! O(1)
+    return True                              # !!! O(1)
 
 ##########################################################################
 
@@ -74,7 +74,7 @@ for j in (50, 500, 1000, 5000, 1000):
     # Из 100000 чисел возьмем 'j' случайно выбранных
     # Всего 10 тыс. чисел
     # O(n) линейная, всегда будет выполняться n раз
-    lst = random.sample(range(-100000, 100000), j)
+    lst = random.sample(range(-100000, 100000), j) # O(n)
 
 print(check_1(lst))
 print(check_2(lst))
