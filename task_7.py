@@ -10,6 +10,8 @@
 Вам нужно доработать программу так, чтобы она могла выполнить проверку на палиндром
 и в таких строках (включающих пробелы)
 """
+
+
 class DequeClass:
     def __init__(self):
         self.elems = []
@@ -32,11 +34,12 @@ class DequeClass:
     def size(self):
         return len(self.elems)
 
+
 def pal_checker(string):
     dc_obj = DequeClass()
 
-    for el in string.replace(' ', ''): # уберем все пробелы в строке и все.
-        dc_obj.add_to_rear(el)
+    for element in string.replace(' ', ''):  # уберем все пробелы в строке и все.
+        dc_obj.add_to_rear(element)
 
     still_equal = True
 
