@@ -45,3 +45,14 @@ def min_el_two(list_el):
 lst = [random.randint(1, 99) for i in range(1, 15)]
 print(elements)
 print(min_el_two(elements))
+
+#--------------------------------var 3 -------------------------------------
+def min_el(list_el):
+
+    for element_1 in list_el:
+        is_min = True
+        for element_2 in list_el:
+            if element_1 > element_2:
+                is_min = False
+        if is_min:
+            return element_1
