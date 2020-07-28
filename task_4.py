@@ -11,15 +11,30 @@
 """
 
 
-def summ_of_elem(counter, num=1, sum_els=0):
-    if counter > 0:
-        counter -= 1
-        sum_els = sum_els + num
-        num = num / 2
-        return summ_of_elem(counter, num, sum_els)
+def summ_of_elem(counter, num=1, sum_els=0, i=1):
+    '''
+
+    :param counter: количество чисел в ряде
+    :param num: элемент ряда, вычисляется по формуле n = n/2
+    :param sum_els: сумма элементов рядя на текущем счетчике
+    :param i: порядковый номер операции если четный, то надо отнять иначе сложить
+    :return: сумму всех элементов ряда от первого до counter
+    '''
+    if counter > 0:  # пока счетчик не 0 считаем
+        if i % 2 == 0:  # если i (порядковый номер операции) четный, то надо вычетать из суммы тек. значение элемента ряда
+            sum_els = sum_els - num  # вычисляем сумму ряда
+            num = num / 2  # вычисляем следующий элемент числового ряда
+            counter -= 1  # изменяем счетчик цикла
+            i += 1  # вычисляем порядковый номер следующей итерации
+            return summ_of_elem(counter, num, sum_els, i)
+        else:  # если i (порядковый номер операции) нечетный, то надо прибалять к сумме тек. значение элемента ряда
+            sum_els = sum_els + num  # вычисляем сумму ряда
+            num = num / 2  # вычисляем следующий элемент числового ряда
+            counter -= 1  # изменяем счетчик цикла
+            i += 1  # вычисляем порядковый номер следующей итерации
+            return summ_of_elem(counter, num, sum_els, i)
     else:
-        print(sum_els)
-        return sum_els
+        return sum_els  # возвращаем сумму
 
 
 try:
@@ -27,3 +42,4 @@ try:
 except ValueError:
     print('вы ввели не число')
 print(f'сумма = {summ_of_elem(numb)}')
+
