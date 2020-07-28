@@ -9,3 +9,40 @@
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+import random
+def check():
+    """
+    функция проверки ввода пользователя
+    :return: возвращает число
+    """
+    try:
+        number = int(input('введите число: '))
+    except ValueError:
+        print('вы ввели не число')
+    return number
+
+def guess(rnd_num=random.randint(1, 100), counter = 10):
+    """
+
+    :param rnd_num: загаданное число
+    :param counter: счетчик попыток
+    :return: строка
+    """
+    if counter == 0: # проверка оставшихся попыток
+        return (f'вы проиграли, закончились попытки. Я загадал: {rnd_num}')
+    else:
+        user_guess = check() # получаем ввод от пользователя
+        if user_guess > rnd_num: # сравниваем ввод с загаданным числом
+            print('Моё число меньше')
+            counter -= 1 # уменьшаем счетчик попыток
+            return guess(rnd_num, counter) # повторяем
+        elif user_guess < rnd_num: # сравниваем ввод с загаданным числом
+            print('Моё число Больше>')
+            counter -= 1 # уменьшаем счетчик попыток
+            return guess(rnd_num, counter) # повторяем
+        else:
+            return (f'Вы угадали моё число {rnd_num}')
+
+
+#rnd_num = random.randint(1, 100)
+print(guess())
