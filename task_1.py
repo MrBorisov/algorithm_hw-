@@ -28,30 +28,35 @@
 Вы вместо трехзначного числа ввели строку (((. Исправьтесь
 Введите операцию (+, -, *, / или 0 для выхода):
 """
+
+
 def calc_req():
+    """
+    Рекурсивный калькулятор, вводим операцию и числа
+    """
     operator = input('введите операцию (+, -, *, / или 0 для выхода): ')
     if operator == '0':
-        return ('Досвидания')
+        return('Досвидания')
     first_num = int(input('Введите первое число: '))
     second_num = int(input('Введите второе число: '))
     if operator == '+':
         print(first_num + second_num)
-        calc_req()
+        return calc_req()
     elif operator == '-':
         print(first_num - second_num)
-        calc_req()
+        return calc_req()
     elif operator == '*':
         print(first_num * second_num)
-        calc_req()
+        return calc_req()
     else:
         if second_num == 0:
             print(
                 'деление на 0 невозможно, это может привести к'
                 'необратимым последствиям и стать причиной уничтожения нашей вселенной')
-            calc_req()
+            return calc_req()
         else:
             print(first_num / second_num)
-            calc_req()
+            return calc_req()
 
 
-calc_req()
+print(calc_req())

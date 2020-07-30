@@ -15,16 +15,21 @@
 Введите число, которое требуется перевернуть: 123
 Перевернутое число: 321
 """
-res = 0
-def invert(number):
-    global res
+
+
+def invert(number, res=0):
+    '''
+
+    :param number: int вводится пользователем
+    :param res: int итоговое значение
+    :return: int инвертированное число, введенное пользователем
+    '''
     if number > 0:
-        res = res*10 + number%10
+        res = res * 10 + number % 10
         number = number // 10
-        return invert(number)
+        return invert(number, res)
     else:
         return res
-
 
 
 num = int(input('введите число: '))

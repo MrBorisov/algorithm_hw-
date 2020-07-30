@@ -18,3 +18,25 @@
 Решите через рекурсию. Решение через цикл не принимается.
 Для оценки Отлично в этом блоке необходимо выполнить 5 заданий из 7
 """
+
+
+def ascii_print(i=32, buf=[]):
+    '''
+
+    :param i: стартовый элемент
+    :param buf: буфер для вывода по 10 штук в строке
+    :return: list
+    '''
+    if i >= 127:
+        return(f'{i} - {chr(i)}')
+    else:
+        char_ascii = (f'{i} - {chr(i)}')
+        buf.append(char_ascii)
+        if len(buf) == 10:
+            print(buf)
+            buf = []
+        i += 1
+        return ascii_print(i, buf)
+
+
+print(ascii_print())
