@@ -30,9 +30,9 @@ def proof(number, sum_of_numbers=0):
     if number == 0:
         return sum_of_numbers
     else:
-        sum_of_numbers + number
+        sum_of_numbers = sum_of_numbers + number
         number -= 1
-        return proof(number, sum_of_numbers=0)
+        return proof(number, sum_of_numbers)
 
 
 number = check()
