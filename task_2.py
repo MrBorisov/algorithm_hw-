@@ -17,6 +17,7 @@
 """
 import hashlib
 
+
 def hash_the_password(password):
     '''
 
@@ -27,6 +28,8 @@ def hash_the_password(password):
     key = hashlib.sha256(password.encode('utf-8') + salt.encode('utf-8'))
     res = key.hexdigest()
     return res
+
+
 user_password = input('введите пароль: ')
 hash_user_password = hash_the_password(user_password)
 
@@ -37,5 +40,3 @@ if hash_user_password == hash_chek_password:
 else:
     print(f'пароли совпадают{hash_user_password}')
     print(f'пароли не совпадают{hash_chek_password}')
-
-
