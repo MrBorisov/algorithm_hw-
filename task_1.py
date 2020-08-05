@@ -22,7 +22,7 @@ def lst_append(num, lst=None):
     :param lst: список
     :return: сиписок
     '''
-    lst(num)
+    lst = [i for i in range(num)]
     return lst
 
 
