@@ -12,19 +12,31 @@
 то реализуйте ф-цию-декоратор и пусть она считает время
 И примените ее к двум своим функциям.
 """
+import time
+
+
 def benchmark(func):
-    import time
+    '''
+    замеряем время исполнения функции
+    :param func:
+    :return: время исполнения
+    '''
 
     def wrapper(*args, **kwargs):
+        '''
+
+        :param args:
+        :param kwargs:
+        :return:
+        '''
         start = time.time()
         func(*args, **kwargs)
         end = time.time()
-        all = end-start
-        print(f'[*] Время выполнения:')
-        return all
+        all_time = end - start
+        print('[*] Время выполнения:')
+        return all_time
 
     return wrapper
-
 
 
 @benchmark
@@ -47,7 +59,6 @@ def dict_append(num):
     :return: словарь
     '''
     test_dict = {a: a ** 2 for a in range(num)}
-
 
 
 print(f'list {lst_append(1000000)}')
