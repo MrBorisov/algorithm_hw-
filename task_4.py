@@ -8,8 +8,6 @@
 
 Попытайтесь написать третью версию, которая будет самой быстрой.
 Сделайте замеры и опишите, получилось ли у вас ускорить задачу.
-Сделал через модуль re, получилось быстрее, возможно потому что re
-хорошо оптимизирован.
 """
 import re
 from timeit import timeit
@@ -53,24 +51,35 @@ def func_3():
     return f'Чаще всего встречается число {num}, ' \
            f'оно появилось в массиве {m} раз(а)'
 
+def func_4():
+    num = max(array, key = array.count)
+    return f'Чаще всего встречается число {num}, ' \
+           f'оно появилось в массиве {array.count(num)} раз(а)'
 
 print(func_1())
 print(func_2())
 print(func_3())
+print(func_4())
 print(
     timeit(
         "func_1()",
         setup="from __main__ import func_1",
-        number=1))
+        number=1000))
 print(
     timeit(
         "func_2()",
         setup="from __main__ import func_2",
-        number=1))
+        number=1000))
 
 
 print(
     timeit(
         "func_3()",
         setup="from __main__ import func_3",
-        number=1))
+        number=1000))
+
+print(
+    timeit(
+        "func_4()",
+        setup="from __main__ import func_4",
+        number=1000))

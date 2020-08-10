@@ -24,7 +24,7 @@ def func_1(nums, new_arr):
     return new_arr
 
 
-nums = [i for i in range(1, 1500000)]
+nums = [i for i in range(1, 1500000)] # решение в одну строку
 new_arr = []
 # левая отсечка времени
 start_time = default_timer()
@@ -32,3 +32,7 @@ start_time = default_timer()
 func_1(nums, new_arr)
 # правая отсечка времени и результат
 print(default_timer() - start_time)
+
+#------------------------------------------------var 2----------------------
+
+nums = [i % 2 for i in range(1, 1500000)] # решение в одну строку
