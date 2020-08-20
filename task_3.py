@@ -27,10 +27,8 @@ def find_mediana(unsrt_lst):
         for el in unsrt_lst_copy:
             if el > my_mediana:
                 right_lst.append(el)
-            elif el < my_mediana:
+            elif el <= my_mediana:
                 left_lst.append(el)
-            elif el == my_mediana:
-
 
 
         if len(left_lst) == len(right_lst) and max(left_lst) <= my_mediana and min(right_lst) >= my_mediana:
@@ -40,9 +38,16 @@ def find_mediana(unsrt_lst):
     return my_mediana
 
 m = 3
-unsrt_lst = [random.randint(0, 100) for i in range(m * 2 + 1)]
+'''unsrt_lst = [random.randint(0, 100) for i in range(m * 2 + 1)]
 print(unsrt_lst)
 print(sorted(unsrt_lst))
 print(find_mediana(unsrt_lst))
-print(median(unsrt_lst))
+print(median(unsrt_lst))'''
 
+for i in range(100):
+    unsrt_lst = [random.randint(0, 100) for i in range(m * 2 + 1)]
+    if find_mediana(unsrt_lst) != median(unsrt_lst):
+        print(unsrt_lst)
+        print(sorted(unsrt_lst))
+        print(find_mediana(unsrt_lst))
+        print(median(unsrt_lst))
